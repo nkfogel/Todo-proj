@@ -65,6 +65,7 @@ function openModal(card){
     modal.classList.add('open')
 
     if(isEditing){
+        document.querySelector('.modal__window-title-new').innerHTML = 'редактированной'
         let task = tasks.find(el => el.id === +card.id);
 
         let inputForm = document.querySelector('.form-input')
@@ -82,8 +83,10 @@ function openModal(card){
         inputForm.value = task.title
         textareaForm.value = task.description
 
+        console.log(card)
         btnAddTask.addEventListener('click', (event) => {
             event.preventDefault()
+
 
             if(inputForm.value.length === 0){
                 inputForm.classList.add('error')
@@ -108,7 +111,7 @@ function openModal(card){
                     task.priority = item.value
                 }
             })
-
+            console.log(card,123)
             card.innerHTML = 
             `
             <div class="list-group-item__bage"></div>
@@ -132,6 +135,7 @@ function openModal(card){
     }else{
         btnAddTask.addEventListener('click', (event) => {
             event.preventDefault()
+           
             
             let inputForm = document.querySelector('.form-input')
             let textareaForm = document.querySelector('.form-textarea')
@@ -207,6 +211,7 @@ function openModal(card){
 btnCancelModal.addEventListener('click', cancelModal);
 function cancelModal() {
     modal.classList.remove('open')
+    btnAddTask.removeEventListener('click', () => {}, false)
     delteValidation()
 }
 
