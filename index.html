@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>project todo-now</title>
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header__container">
+                <div class="header__logo">
+                    <img class="header-logo-icon" src="icons/logo/to-do.png" alt="logo">
+                </div>
+                <div class="header__sorting">
+                    <img class="sorting-btn sorting-btn-up" src="icons/sorting/sort-ascending.png" alt="settings">
+                    <img class="sorting-btn sorting-btn-down" src="icons/sorting/sort-descending.png" alt="settings">
+                </div>
+                <div class="header__cerate-sorting">
+                    <button class="create-task" id="createTask">Создать задачу</button>
+                    
+                    <img class="setting-btn" src="icons/settings/icon-settings.png" alt=" sorting">
+                    <div class="setting__menu">
+                        <div class="setting-menu-content">
+                            <span>Сменить тему</span>
+                            <div class="change__background">
+                                <button class="night-theme-btn">
+                                    <img  class="night-theme-btn-icon night-theme-btn-icon__sun" src="icons/dark-mode/free-icon-sun.png" alt="icon">
+                                    <img class="night-theme-btn-icon night-theme-btn-icon__moon" src="icons/dark-mode/free-icon-moon.png" alt="icon">
+                                </button>
+                            </div>
+                            <div class="close__setting-btn">&#10006</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </header>
+    <div class="main">
+        <!-- list of tasks -->
+         <div class="wrapper">
+            <div class="block-task-counter">
+                <div class="counter">
+                    <div class="total-task">
+                        <span>Всего задач:</span>
+                        <span class="total">0</span>
+                    </div>
+        
+                    <div class="completed-tasks">
+                        <span>Всего задач выполнено:</span>
+                        <span class="completed">0</span>
+                    </div>
+                </div>
+                <div class="block-plan-task">
+                    <h2>Все задачи</h2>
+                    <img src="icons/plan-task/pen.png" alt="icon">
+                </div>  
+            </div>
+            
+            <div class="empty-list">
+                    <img src="icons/empty/sticky-note.png" alt="empty">
+                    <h1 class="empty-list-title">У вас нет ни одной задачи. Может создадим?</h1>
+                    <button class="create-task create-task-main" data-action ='create' id="createTask">Создать задачу</button>
+            </div>
+
+            <ul class="list-group" id="tasksList">
+                <!-- <li class="list-group-item">
+                    <div class="list-group-item__bage"></div>
+                    <div class="note">
+                        <span class="note-title" >навзание</span>
+                        <span class="note-description">Описание</span>
+                        <span class="note-priority">Приоретет</span>
+                    </div>
+                    <div class="note-btn">
+                        <span>Дата создания задачи</span>
+                        <button class="btn-done" type="submit" data-action ='done'>&check;</button>
+                        <button class="btn-delete" type="button" data-action ='delete'>&times;</button>
+                        <button class="btn-edit" type="button" data-action ='edit'>&#9998;</button>
+                        <button class="btn-return" type="button" data-action ='returnTask'>&#8593;</button>
+                    </div>
+                </li> -->
+             </ul>
+         </div>
+    </div>
+    
+    <div class="modal__background">
+        <div class="modal__window">
+            <div class="modal__window-title">
+                <h3>Пожалуйста, введите навзание <span>новой</span> задачи</h2>
+            </div>
+            <form id="form">
+                <span class="form-input-title">Название задачи</span>
+                <div class="validation-block">
+                    <input type="text" class="form-input" placeholder="Введите навзание задачи" id="title" autofocus>
+                </div>
+    
+                <span class="formtextarea-title">Описание задачи</span>
+                <div class="validation-block">
+                    <textarea class="form-textarea" placeholder="Введите описание задачи" id="description" autofocus></textarea>
+                </div>
+                
+
+                <span class="form-color-title">Цвет задачи</span>
+                <input class="form-input-color" type="color" id="color" value="#F08080">
+
+                <span class="form-radio-title">Приоретет задачи</span>
+                <div class="modal__form-radio">
+                    <div class="radio__block">
+                        
+                        <input id="radioHigh" type="radio" class="form__radio" name="level" value="высокий">
+                        <label for="radioHigh" class="label__form-radio">высокий</label>
+                    </div>
+                    <div class="radio__block">
+                        <input id="radioMiddle" type="radio" class="form__radio" name="level" value="средний">
+                        <label for="radioMiddle" class="label__form-radio">средний</label>
+                    </div>
+                    <div class="radio__block">
+                        <input id="radioBottom" type="radio" class="form__radio" name="level" value="низкий">
+                        <label for="radioBottom" class="label__form-radio">низкий</label>
+                    </div>
+                </div>
+                <div class="modal__buttons"> 
+                    <button class="modal__button-ok" type="submit">Ok</button>
+                    <button class="modal__button-cancel" type="reset">Cancel</button>
+                </div>
+            </form>
+            <div class="modal__window-close">&#10006</div>
+        </div>
+    </div>
+    <div class="editing__container">
+        <div class="editing">
+            <div class="editing-title">
+                <span>Редактировние вашей задачи</span>
+            </div>
+            <form id="editForm">
+
+                <span class="edit-input-title">Редактирование названия задчи</span>
+                <input type="text" class="input-edit" placeholder="Введите редактирование названия вашей задачи">
+
+                <span class="edit-textarea-title">Редактирование описания задчи</span>
+                <textarea class="textarea-edit" placeholder="Введите редактирование описания вашей задачи"></textarea>
+
+                <span class="edit-color-title">Цвет задачи</span>
+                <input class="edit-input-color" type="color" id="color"  value="#DC143C">
+
+                
+
+                <span class="edit-form-radio-title">Приоретет задачи</span>
+                <div class="edit__form-radio">
+                    <div class="edit__radio-block">
+                        <input id="editRadioHigh" class="edit-radio" type="radio" name="level" value="высокий">
+                        <label  class="edit-label" for="editRadioHigh">высоский </label>
+                    </div>
+                    <div class="edit__radio-block">
+                        <input id="editRadioMiddle" class="edit-radio" type="radio" name="level" value="средний">
+                        <label class="edit-label" for="editRadioMiddle">средний</label>
+                    </div>
+                    <div class="edit__radio-block">
+                        <input id="editRadioBottom" class="edit-radio" type="radio" name="level" value="низкий">
+                        <label class="edit-label" for="editRadioBottom">низкий</label>
+                    </div>
+                </div>
+               
+
+                <div class="edit-form-btn">
+                    <button class="edit-form__ok-btn" type="submit">Ok</button>
+                    <button class="edit-form__cancel-btn" type="reset">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="container__done-task">
+            <div class="container__done-task-title">
+                <h2>Выполненные задачи</h2>
+                <img src="icons/done-block/accept.png" alt="done-icon">
+            </div>
+            
+            <ul class="list-group-done" id="tasksListDone">
+
+            </ul>
+        </div>
+    </div>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
