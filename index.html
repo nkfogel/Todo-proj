@@ -41,52 +41,40 @@
     </header>
     <div class="main">
         <!-- list of tasks -->
-         <div class="wrapper">
-            <div class="block-task-counter">
-                <div class="counter">
-                    <div class="total-task">
-                        <span>Всего задач:</span>
-                        <span class="total">0</span>
-                    </div>
-        
-                    <div class="completed-tasks">
-                        <span>Всего задач выполнено:</span>
-                        <span class="completed">0</span>
-                    </div>
-                </div>
-                <div class="block-plan-task">
-                    <h2>Все задачи</h2>
-                    <img src="icons/plan-task/pen.png" alt="icon">
-                </div>  
-            </div>
-            
+        <div class="wrapper">
             <div class="empty-list">
-                    <img src="icons/empty/sticky-note.png" alt="empty">
-                    <h1 class="empty-list-title">У вас нет ни одной задачи. Может создадим?</h1>
-                    <button class="create-task create-task-main" data-action ='create' id="createTask">Создать задачу</button>
+                <img src="icons/empty/sticky-note.png" alt="empty">
+                <h1 class="empty-list-title">У вас нет ни одной задачи. Может создадим?</h1>
+                <button class="create-task create-task-main" data-action ='create' id="createTask">Создать задачу</button>
             </div>
+            <div class="main__counter">
+                <div class="main__top">
+                    <span class="main__quantity-text">Количество задач</span>
+                    <div class="main__quantity-num"></div>
 
-            <ul class="list-group" id="tasksList">
-                <!-- <li class="list-group-item">
-                    <div class="list-group-item__bage"></div>
-                    <div class="note">
-                        <span class="note-title" >навзание</span>
-                        <span class="note-description">Описание</span>
-                        <span class="note-priority">Приоретет</span>
-                    </div>
-                    <div class="note-btn">
-                        <span>Дата создания задачи</span>
-                        <button class="btn-done" type="submit" data-action ='done'>&check;</button>
-                        <button class="btn-delete" type="button" data-action ='delete'>&times;</button>
-                        <button class="btn-edit" type="button" data-action ='edit'>&#9998;</button>
-                        <button class="btn-return" type="button" data-action ='returnTask'>&#8593;</button>
-                    </div>
-                </li> -->
-             </ul>
-         </div>
-    </div>
+                </div>
+                <div class="main__counter-content">
+                    <span class="main__bottom">Все задачи</span>
+                    <img src="icons/plan-task/pen.png" alt="icon">
+                </div>
+                
+            </div>
+            <div class="main__task-container"></div>
+
+            <div class="main__text">
+                <div class="main__text-content">
+                    <span>Выполненные задачи</span>
+                    <img class="main__text-img" src="icons/done-block/accept.png" alt="icons">
+                </div>
+                
+            </div>
+            <div class="main__complete">
+        </div>    
+    </div> 
     
-    <div class="modal__background">
+    <div class="modal">
+        <div class="modal__overlay"></div>
+        <!-- /.modal__overlay -->
         <div class="modal__window">
             <div class="modal__window-title">
                 <h3>Пожалуйста, введите навзание <span class="modal__window-title-new">новой</span> задачи</h2>
@@ -124,68 +112,14 @@
                 </div>
                 <div class="modal__buttons"> 
                     <button class="modal__button-ok" type="submit">Ok</button>
-                    <button class="modal__button-cancel" type="reset">Cancel</button>
+                    <button class="modal__button-cancel close-modal" type="reset">Cancel</button>
                 </div>
             </form>
-            <div class="modal__window-close">&#10006</div>
+            <div class="modal__window-close close-modal">&#10006</div>
         </div>
+         <!-- /.modal__overlay -->
     </div>
-    <div class="editing__container">
-        <div class="editing">
-            <div class="editing-title">
-                <span>Редактировние вашей задачи</span>
-            </div>
-            <form id="editForm">
-
-                <span class="edit-input-title">Редактирование названия задчи</span>
-                <input type="text" class="input-edit" placeholder="Введите редактирование названия вашей задачи">
-
-                <span class="edit-textarea-title">Редактирование описания задчи</span>
-                <textarea class="textarea-edit" placeholder="Введите редактирование описания вашей задачи"></textarea>
-
-                <span class="edit-color-title">Цвет задачи</span>
-                <input class="edit-input-color" type="color" id="color"  value="#DC143C">
-
-                
-
-                <span class="edit-form-radio-title">Приоретет задачи</span>
-                <div class="edit__form-radio">
-                    <div class="edit__radio-block">
-                        <input id="editRadioHigh" class="edit-radio" type="radio" name="level" value="высокий">
-                        <label  class="edit-label" for="editRadioHigh">высоский </label>
-                    </div>
-                    <div class="edit__radio-block">
-                        <input id="editRadioMiddle" class="edit-radio" type="radio" name="level" value="средний">
-                        <label class="edit-label" for="editRadioMiddle">средний</label>
-                    </div>
-                    <div class="edit__radio-block">
-                        <input id="editRadioBottom" class="edit-radio" type="radio" name="level" value="низкий">
-                        <label class="edit-label" for="editRadioBottom">низкий</label>
-                    </div>
-                </div>
-               
-
-                <div class="edit-form-btn">
-                    <button class="edit-form__ok-btn" type="submit">Ok</button>
-                    <button class="edit-form__cancel-btn" type="reset">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="wrapper">
-        <div class="container__done-task">
-            <div class="container__done-task-title">
-                <h2>Выполненные задачи</h2>
-                <img src="icons/done-block/accept.png" alt="done-icon">
-            </div>
-            
-            <ul class="list-group-done" id="tasksListDone">
-
-            </ul>
-        </div>
-    </div>
-
-
+    <!-- /.modal -->
     <script src="index.js"></script>
 </body>
 </html>
